@@ -100,12 +100,20 @@ unitMetaTable = {
     __add = function(u1, u2)
         local newUnit = initialiseUnit()
 
-        assert(type(u1) ~= "number" and type(u2) ~= "number",
-               "Cannot add non unit to unit type")
+        if type(u1) == "number" then
+            local n = u1
+            u1 = initialiseUnit()
+            u1.quantity = n
+        end
+        if type(u2) == "number" then
+            local n = u2
+            u2 = initialiseUnit()
+            u2.quantity = n
+        end
 
         for i in ipairs(u1.baseUnits) do
             assert(u1.baseUnits[i] == u2.baseUnits[i],
-                   "Cannot add incompatible units.")
+                   "Cannot add incompatible units, units have different dimensions")
             newUnit.baseUnits[i] = u1.baseUnits[i]
         end
 
@@ -116,12 +124,20 @@ unitMetaTable = {
     __sub = function(u1, u2)
         local newUnit = initialiseUnit()
 
-        assert(type(u1) ~= "number" and type(u2) ~= "number",
-               "Cannot subtract non unit to unit type")
+        if type(u1) == "number" then
+            local n = u1
+            u1 = initialiseUnit()
+            u1.quantity = n
+        end
+        if type(u2) == "number" then
+            local n = u2
+            u2 = initialiseUnit()
+            u2.quantity = n
+        end
 
         for i in ipairs(u1.baseUnits) do
             assert(u1.baseUnits[i] == u2.baseUnits[i],
-                   "Cannot add incompatible units.")
+                   "Cannot add incompatible units, units have different dimensions")
             newUnit.baseUnits[i] = u1.baseUnits[i]
         end
 
