@@ -36,7 +36,9 @@ local function truncate(n)
     end
 end
 
--- this function is based off that found in https://www.nuget.org/packages/Metric, which is MIT licensed by Ivan Milutinović
+-- this function is based off that found in
+-- https://www.nuget.org/packages/Metric, which is MIT licensed by Ivan
+-- Milutinović
 local function factor(unitTable, factorTable)
 
     local power
@@ -55,10 +57,14 @@ local function factor(unitTable, factorTable)
     return power or 0
 end
 
--- this function is based off that found in https://www.nuget.org/packages/Metric, which is MIT licensed by Ivan Milutinović
--- I think there is a better algorithm out there that better matches what a human would write. This function also has no context.
--- This function cannot find the combination "N s" as is used for impulse. This is because this algorithm never takes powers in the "wrong direction", which would
--- be required for "N s" to arise. The better algorithm may be combining this algorithm with a list of exceptions.
+-- this function is based off that found in
+-- https://www.nuget.org/packages/Metric, which is MIT licensed by Ivan
+-- Milutinović I think there is a better algorithm out there that better matches
+-- what a human would write. This function also has no context. This function
+-- cannot find the combination "N s" as is used for impulse. This is because
+-- this algorithm never takes powers in the "wrong direction", which would be
+-- required for "N s" to arise. The better algorithm may be combining this
+-- algorithm with a list of exceptions.
 local function findDerivedUnits(baseUnitTable)
 
     local derivedUnitReturn = {}
@@ -219,8 +225,9 @@ unitMetaTable = {
         else
             newUnit.quantity = u1.quantity ^ power
             for index, value in ipairs(u1.baseUnits) do
-                -- do not check for non integer powers, these are allowed to be introduced.
-                -- For example specific detectivity contains a Hz^-1/2 unit.
+                -- do not check for non integer powers, these are allowed to be
+                -- introduced. For example specific detectivity contains a
+                -- Hz^-1/2 unit.
                 newUnit.baseUnits[index] = value * power
             end
         end

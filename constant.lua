@@ -1,5 +1,6 @@
---- Physical constants to go with si library
---- There is nothing stopping you from modifying the constants during run time, so please don't.
+-- Physical constants to go with si library
+-- There is nothing stopping you from modifying the constants during run time,
+--  so please don't.
 local si = require("si")
 
 local constants = {}
@@ -14,9 +15,9 @@ do
     local mol = si.Unit("mol")
     local cd = si.Unit("cd")
 
-    --- all constant values are from nist
+    -- all constant values are from nist
     constants.unit = {
-        --- exact defined physical constants
+        -- exact defined physical constants
         c = 299792458 * m * s ^ -1,
         speedOfLight = 299792458 * m * s ^ -1,
         k = 1.380649 * 10 ^ -23 * si.Unit("J") * K ^ -1,
@@ -37,7 +38,7 @@ do
         stefanBoltzmannConstant = 5.670374419 * 10 ^ -8 * si.Unit("W") * m ^ -2 *
             K ^ -4,
 
-        --- non exact physical constants
+        -- non exact physical constants
         G = 6.67430 * 10 ^ -11 * m ^ 3 * kg ^ -1 * s ^ -2,
         newtonianGravityConstant = 6.67430 * 10 ^ -11 * m ^ 3 * kg ^ -1 * s ^ -2,
         me = 9.1093837015 * 10 ^ -31 * kg,
